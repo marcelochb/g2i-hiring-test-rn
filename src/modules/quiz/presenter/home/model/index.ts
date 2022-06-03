@@ -1,5 +1,5 @@
 import { ModelOfTheme } from '@src/core/themes';
 
-export type ModelOfTexts = {
+export type ModelOfHome = {
   theme: ModelOfTheme
-}
+};

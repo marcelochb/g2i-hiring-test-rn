@@ -1,6 +1,10 @@
+import { ModelOfTheme } from '@src/core/themes';
 import { StyleSheet } from 'react-native';
 
-export const styles = StyleSheet.create({
-  body: { fontSize: 16 },
-  title: { fontSize: 16, fontWeight: 'bold' },
-});
+export const styles = (theme: ModelOfTheme) => {
+  const { fontSize } = theme;
+  return StyleSheet.create({
+    body: { fontSize: fontSize.base },
+    title: { fontSize: fontSize.base, fontWeight: 'bold' },
+  });
+};

@@ -10,15 +10,13 @@
 
 import React from 'react';
 import {
-  Text,
   View,
 } from 'react-native';
+import { BaseTheme } from '@src/core/themes';
 import { Home } from './modules/quiz/presenter/home';
 
 const Index = () => (
-  <View>
-    <Home />
-  </View>
+  <Home theme={BaseTheme} />
 );
 
 export default Index;
