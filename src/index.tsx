@@ -13,10 +13,14 @@ import {
   View,
 } from 'react-native';
 import { BaseTheme } from '@src/core/themes';
-import { Home } from './modules/quiz/presenter/home';
+import { Home } from './modules/quiz/presenter';
+import { NavigationContainer } from '@react-navigation/native';
+import { Routes } from './core/routes';
 
 const Index = () => (
-  <Home theme={BaseTheme} />
+  <NavigationContainer>
+    <Routes />
+  </NavigationContainer>
 );
 
 export default Index;
