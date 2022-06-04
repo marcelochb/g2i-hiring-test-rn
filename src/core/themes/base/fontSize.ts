@@ -1,10 +1,10 @@
 import { ModelOfFontSizeTheme } from '@src/core/themes/model';
 
 export const fontSize:ModelOfFontSizeTheme = {
-  smallest: 8,
-  small: 10,
-  base: 14,
-  large: 18,
-  largest: 26,
-  extraLagest: 36,
+  smallest: 12,
+  small: 16,
+  base: 20,
+  large: 24,
+  largest: 28,
+  extraLagest: 32,
 };
