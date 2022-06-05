@@ -5,12 +5,12 @@ const api = axios.create({
 });
 
 export interface IApiClient {
-  getAll(): Promise<AxiosResponse>;
+  getAll<T>(): Promise<AxiosResponse<T[]>>;
 }
 
 export class ApiClient implements IApiClient {
-  async getAll(): Promise<AxiosResponse<any, any>> {
-    return await api.get('');
+  async getAll<T>(): Promise<AxiosResponse<T[], any>> {
+    return await api.get<T[]>('');
   }
 
 }
