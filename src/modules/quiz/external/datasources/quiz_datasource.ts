@@ -3,6 +3,9 @@ import { IApiClient } from "@src/core/services";
 import { inject, injectable } from "tsyringe";
 import { IQuizDatasource } from "../../infra/datasources";
 import { QuizModel } from "../../infra/models";
+interface IProps {
+  results: QuizModel[]
+}
 @injectable()
 export class QuizDatasource implements IQuizDatasource {
   constructor(
@@ -11,8 +14,8 @@ export class QuizDatasource implements IQuizDatasource {
   ) {}
 
   async getAllQuiz(): Promise<QuizModel[]> {
-    const response =  await this.apiClient.getAll<QuizModel>();
-    const parsedResponse = response.data.map(body => QuizModel.fromApi(body));
+    const response =  await this.apiClient.getAll<IProps>();
+    const parsedResponse = response.data.results.map(body => QuizModel.fromApi(body));
     return parsedResponse;
   }
 }
