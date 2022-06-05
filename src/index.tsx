@@ -16,11 +16,14 @@ import { BaseTheme } from '@src/core/themes';
 import { Home } from './modules/quiz/presenter';
 import { NavigationContainer } from '@react-navigation/native';
 import { Routes } from './core/routes';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 const Index = () => (
-  <NavigationContainer>
-    <Routes />
-  </NavigationContainer>
+  <SafeAreaProvider>
+    <NavigationContainer>
+      <Routes />
+    </NavigationContainer>
+  </SafeAreaProvider>
 );
 
 export default Index;

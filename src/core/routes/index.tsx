@@ -1,15 +1,20 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import { Home } from '@src/modules/quiz/presenter';
-import { BaseTheme } from '../themes';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { Home, Question } from '@src/modules/quiz/presenter';
 
 const Stack = createStackNavigator();
 
 export const Routes: React.FC = () => (
-  <SafeAreaProvider>
     <Stack.Navigator>
-      <Stack.Screen name='Home' component={() => <Home theme={BaseTheme} />} />
+      <Stack.Screen
+        name='Home'
+        component={Home}
+        options={{ headerShown: false }}
+        />
+      <Stack.Screen
+        name='Question'
+        component={Question}
+        options={{ headerTitle: () => null}}
+      />
     </Stack.Navigator>
-  </SafeAreaProvider>
 )
