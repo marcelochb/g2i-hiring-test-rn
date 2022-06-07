@@ -9,21 +9,20 @@
  */
 
 import React from 'react';
-import {
-  View,
-} from 'react-native';
-import { BaseTheme } from '@src/core/themes';
-import { Home } from './modules/quiz/presenter';
 import { NavigationContainer } from '@react-navigation/native';
 import { Routes } from './core/routes';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import store from './core/config/store';
+import { Provider } from 'react-redux';
 
 const Index = () => (
-  <SafeAreaProvider>
-    <NavigationContainer>
-      <Routes />
-    </NavigationContainer>
-  </SafeAreaProvider>
+  <Provider store={store}>
+    <SafeAreaProvider>
+      <NavigationContainer>
+        <Routes />
+      </NavigationContainer>
+    </SafeAreaProvider>
+  </Provider>
 );
 
 export default Index;

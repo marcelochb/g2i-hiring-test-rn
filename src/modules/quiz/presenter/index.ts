@@ -1,3 +1,3 @@
-export * from './home';
-export * from './question';
-export * from './quiz_binds';
+export * from './screens';
+export * from './binds';
+export * from './store';
