@@ -14,7 +14,7 @@ export const Routes: React.FC = () => (
       <Stack.Screen
         name='Question'
         component={Question}
-        options={{ headerTitle: () => null}}
+        options={{ headerShown: false }}
       />
     </Stack.Navigator>
 )

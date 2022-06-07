@@ -1,4 +1,4 @@
 import {combineReducers, createStore} from 'redux';
-import {QuizReducer} from '@src/modules/quiz/presenter';
+import {quizReducer} from '@src/modules/quiz/presenter';
 
-export default createStore(combineReducers({QuizReducer}));
+export default createStore(combineReducers({quizReducer}));

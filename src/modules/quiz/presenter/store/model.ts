@@ -2,6 +2,7 @@ import { QuizEntity } from "@src/modules/quiz/domain/entities";
 
 export interface IQuizReducer extends QuizEntity {
   answered?: boolean;
+  answer?: boolean;
 }
 export interface IQuizInitialState {
   loading: boolean,
