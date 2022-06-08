@@ -6,7 +6,8 @@ const INITIAL_STATE:IQuizInitialState = {
   loading: false,
   quizzes: [],
   currentQuiz: {} as IQuizReducer,
-  totalCount: 0
+  totalCount: 0,
+  correctAnswers: 0
 }
 
 export const quizReducer = (
@@ -21,6 +22,7 @@ export const quizReducer = (
       }
       case QuizReducerConstants.QUIZ_STATUS_SUCCESS: {
         draft.quizzes = action.payload.quizzes;
+        // Parse question text and put a index in each question
         draft.quizzes.forEach((quiz, index) => {
           draft.quizzes[index].question = quiz.question.replace(/&#039;/g, "'").replace(/&quot;/g, '"');
           draft.quizzes[index].currentCount = index + 1;
@@ -33,6 +35,10 @@ export const quizReducer = (
       }
       case QuizReducerConstants.QUIZ_ANSWER_SUCCESS: {
         draft.currentQuiz.answered = action.payload.answer;
+        // Vefify and count correct answers
+        if (draft.currentQuiz.answered == draft.currentQuiz.correct_answer) {
+          draft.correctAnswers = draft.correctAnswers.valueOf() + 1;
+        }
         draft.quizzes.forEach((quiz,index) => {
           if (draft.currentQuiz.category == quiz.category &&
             draft.currentQuiz.question == quiz.question &&
@@ -41,8 +47,12 @@ export const quizReducer = (
           }
         })
         const firstQuiz = draft.quizzes.find(quiz => quiz.answered == undefined);
-        draft.currentQuiz = { ...firstQuiz } as IQuizReducer;
-        draft.loading = false;
+        // Verify if isn't last question, and select next one.
+        if (draft.currentQuiz.currentCount != draft.totalCount) {
+          console.log('entrei 2')
+          draft.currentQuiz = { ...firstQuiz } as IQuizReducer;
+          draft.loading = false;
+        }
         break;
       }
     }

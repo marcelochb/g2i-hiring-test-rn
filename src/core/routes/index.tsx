@@ -1,6 +1,6 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import { Home, Question } from '@src/modules/quiz/presenter';
+import { Home, Question, Result } from '@src/modules/quiz/presenter';
 
 const Stack = createStackNavigator();
 
@@ -14,6 +14,11 @@ export const Routes: React.FC = () => (
       <Stack.Screen
         name='Question'
         component={Question}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name='Result'
+        component={Result}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>

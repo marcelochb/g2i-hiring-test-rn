@@ -10,10 +10,11 @@ export const styles = (theme: ModelOfTheme) => {
       marginHorizontal: metrics.base,
       paddingVertical: metrics.largest
     },
-    buttons: {
+    buttonView: {
       flexDirection: 'row',
       justifyContent: 'space-evenly',
       marginTop: metrics.largest
-    }
+    },
+    button: {flex: 1}
   })
 }

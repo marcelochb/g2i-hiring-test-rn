@@ -5,7 +5,7 @@ import { CardQuestion, PageWrapper, Texts } from '@src/core/components';
 import { BaseTheme } from '@src/core/themes';
 
 export const Question: React.FC = () => {
-  const {getController: {quiz,loading,totalCount}} = useQuestionController();
+  const {getController: {quiz,loading,totalCount}, handlerController} = useQuestionController();
   return (
     <PageWrapper theme={BaseTheme} loading={loading}>
       <Texts.Title theme={BaseTheme} alignCenter>{quiz.category}</Texts.Title>
@@ -13,8 +13,8 @@ export const Question: React.FC = () => {
         <CardQuestion
           theme={BaseTheme}
           label={quiz.question}
-          onPressTrue={() => {}}
-          onPressFalse={() => {}}
+          onPressTrue={() => handlerController.answerQuestion(true)}
+          onPressFalse={() => handlerController.answerQuestion(false)}
         />
         <Texts.Body theme={BaseTheme} alignCenter>{`${quiz.currentCount} of ${totalCount}`}</Texts.Body>
       </View>
