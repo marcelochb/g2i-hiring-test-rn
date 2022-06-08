@@ -5,6 +5,7 @@ export const styles = (theme: ModelOfTheme) => {
   const {metrics} = theme;
   return StyleSheet.create({
     link: {
+      flex: 1,
       height: metrics.buttonHeight,
       width: metrics.buttonWidth,
     },
