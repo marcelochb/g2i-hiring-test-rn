@@ -9,7 +9,6 @@ export const styles = (theme: ModelOfTheme) => {
       justifyContent: 'space-between',
       padding: metrics.base,
       height: '100%',
-      backgroundColor: colors.background
     }
   })
 }

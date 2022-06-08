@@ -20,10 +20,11 @@ export const quizReducer = (
         break;
       }
       case QuizReducerConstants.QUIZ_STATUS_SUCCESS: {
-        action.payload.quizzes.forEach((quiz, index) => {
-          action.payload.quizzes[index].question = quiz.question.replace(/&#039;/g, "'").replace(/&quot;/g, '"');
-        })
         draft.quizzes = action.payload.quizzes;
+        draft.quizzes.forEach((quiz, index) => {
+          draft.quizzes[index].question = quiz.question.replace(/&#039;/g, "'").replace(/&quot;/g, '"');
+          draft.quizzes[index].currentCount = index + 1;
+        })
         const firstQuiz = draft.quizzes.find(quiz => quiz.answered == undefined);
         draft.currentQuiz = { ...firstQuiz } as IQuizReducer;
         draft.totalCount = action.payload.quizzes.length;

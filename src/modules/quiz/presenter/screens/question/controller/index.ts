@@ -26,6 +26,7 @@ export const useQuestionController = () => {
     getController: {
       loading: state.loading,
       quiz: state.currentQuiz,
+      totalCount: state.totalCount,
     }
   }
 }
