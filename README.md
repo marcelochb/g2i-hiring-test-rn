@@ -63,6 +63,8 @@ After all questions have been answered, navigate to the Results Screen
 
 Results screen:
 
+<img align="center" alt="quiz" src="https://raw.githubusercontent.com/g2i/code-challenge-static-assets/master/Score.png">
+
 The Score shows correct and total
 Displays a list of the questions and whether the answer was correct or not
 PLAY AGAIN starts over and navigates to the Home Screen
