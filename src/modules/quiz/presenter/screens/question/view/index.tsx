@@ -5,9 +5,12 @@ import { CardQuestion, PageWrapper, Texts } from '@src/core/components';
 import { BaseTheme } from '@src/core/themes';
 
 export const Question: React.FC = () => {
-  const {getController: {quiz,loading,totalCount}, handlerController} = useQuestionController();
+  const {
+    getController: {quiz,loading,totalCount,empty,error},
+    handlerController
+  } = useQuestionController();
   return (
-    <PageWrapper theme={BaseTheme} loading={loading}>
+    <PageWrapper theme={BaseTheme} loading={loading} empty={empty} error={error}>
       <Texts.Title theme={BaseTheme} alignCenter>{quiz.category}</Texts.Title>
       <View style={{flex:1,justifyContent:'center'}}>
         <CardQuestion

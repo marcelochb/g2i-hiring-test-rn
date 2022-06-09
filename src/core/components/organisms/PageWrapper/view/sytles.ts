@@ -20,6 +20,10 @@ export const styles = (theme: ModelOfTheme) => {
     loading: {
       justifyContent: 'center',
       alignItems: 'center'
-    }
+    },
+    button: {
+      marginTop: metrics.largest
+    },
+    error: {marginBottom: metrics.largest}
   })
 }

@@ -6,6 +6,8 @@ export interface IQuizReducer extends QuizEntity {
 }
 export interface IQuizInitialState {
   loading: boolean,
+  error: boolean,
+  empty: boolean,
   quizzes: IQuizReducer[],
   currentQuiz: IQuizReducer,
   totalCount: Number,

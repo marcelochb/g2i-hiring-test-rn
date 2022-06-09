@@ -6,7 +6,7 @@ import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { container } from "tsyringe"
 import { quizDependences } from "../../../binds"
-import { quizAnswerSuccess, quizLoadSuccess, quizStatusLoading } from "../../../store"
+import { quizAnswerSuccess, quizLoadEmpty, quizLoadFailure, quizLoadSuccess, quizStatusLoading } from "../../../store"
 
 quizDependences()
 export const useQuestionController = () => {
@@ -20,9 +20,10 @@ export const useQuestionController = () => {
         dispatch(quizStatusLoading());
         try {
           const response = await getAllQuiz.call();
-          dispatch(quizLoadSuccess(response));
+          if (response.length == 0) dispatch(quizLoadEmpty());
+          else dispatch(quizLoadSuccess(response));
         } catch (error) {
-          console.log(error)
+          dispatch(quizLoadFailure());
         }
       };
       load();
@@ -42,6 +43,8 @@ export const useQuestionController = () => {
       loading: state.loading,
       quiz: state.currentQuiz,
       totalCount: state.totalCount,
+      empty: state.empty,
+      error: state.error,
     },
     handlerController: {
       answerQuestion

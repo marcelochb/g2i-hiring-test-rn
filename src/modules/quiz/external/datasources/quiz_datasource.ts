@@ -15,12 +15,8 @@ export class QuizDatasource implements IQuizDatasource {
   ) {}
 
   async getAllQuiz(): Promise<QuizModel[]> {
-    // try {
       const response =  await this.apiClient.getAll<IProps>() as AxiosResponse<IProps>;
       const parsedResponse = response.data.results.map(body => QuizModel.fromApi(body));
       return parsedResponse;
-    // } catch (error) {
-    //   throw error
-    // }
   }
 }

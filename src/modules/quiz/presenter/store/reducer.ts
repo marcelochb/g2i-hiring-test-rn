@@ -4,6 +4,8 @@ import { IQuizActions, IQuizInitialState, IQuizReducer } from './model';
 
 const INITIAL_STATE:IQuizInitialState = {
   loading: false,
+  error: false,
+  empty: false,
   quizzes: [],
   currentQuiz: {} as IQuizReducer,
   totalCount: 0,
@@ -20,6 +22,17 @@ export const quizReducer = (
         draft.loading = true;
         break;
       }
+      case QuizReducerConstants.QUIZ_STATUS_FAILURE: {
+        draft.loading = false;
+        draft.error = true;
+        break;
+      }
+      case QuizReducerConstants.QUIZ_STATUS_EMPTY: {
+        draft.loading = false;
+        draft.error = false;
+        draft.empty = true;
+        break;
+      }
       case QuizReducerConstants.QUIZ_STATUS_SUCCESS: {
         draft.quizzes = action.payload.quizzes;
         // Parse question text and put a index in each question
@@ -31,6 +44,8 @@ export const quizReducer = (
         draft.currentQuiz = { ...firstQuiz } as IQuizReducer;
         draft.totalCount = action.payload.quizzes.length;
         draft.correctAnswers = 0;
+        draft.error = false;
+        draft.empty = false;
         draft.loading = false;
         break;
       }
