@@ -3,7 +3,10 @@
 ![Success-flow](apk/Success_flow.gif)
 ![Error-flow](apk/Error_flow.gif)
 
-### [Android App for test!](apk/app-release.apk)
+## Click to download Android version for App test
+<a download="apk/app-release.apk" href="/path/to/image" title="ImageName">
+    <img align="center" alt="react" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg">
+</a>
 
 ### Technologies used
 
