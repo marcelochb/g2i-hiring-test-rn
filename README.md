@@ -3,6 +3,8 @@
 ![Success-flow](apk/Success_flow.gif)
 ![Error-flow](apk/Error_flow.gif)
 
+### [Android App for test!](apk/app-release.apk)
+
 ### Technologies used
 
 - React Native
