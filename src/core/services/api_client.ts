@@ -5,12 +5,16 @@ const api = axios.create({
 });
 
 export interface IApiClient {
-  getAll<T>(): Promise<AxiosResponse<T>>;
+  getAll<T>(): Promise<AxiosResponse<T>| Error>;
 }
 
 export class ApiClient implements IApiClient {
   async getAll<T>(): Promise<AxiosResponse<T, any>> {
-    return await api.get<T>('');
+    try {
+      return await api.get<T>('');
+    } catch (error) {
+      throw error
+    }
   }
 
 }

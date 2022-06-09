@@ -18,8 +18,12 @@ export const useQuestionController = () => {
     () => {
       const load = async () => {
         dispatch(quizStatusLoading());
-        const response = await getAllQuiz.call();
-        dispatch(quizLoadSuccess(response));
+        try {
+          const response = await getAllQuiz.call();
+          dispatch(quizLoadSuccess(response));
+        } catch (error) {
+          console.log(error)
+        }
       };
       load();
     },[]

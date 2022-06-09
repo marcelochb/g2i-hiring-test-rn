@@ -1,5 +1,6 @@
 import { InjectContants } from "@src/core/constants";
 import { IApiClient } from "@src/core/services";
+import { AxiosResponse } from "axios";
 import { inject, injectable } from "tsyringe";
 import { IQuizDatasource } from "../../infra/datasources";
 import { QuizModel } from "../../infra/models";
@@ -14,8 +15,12 @@ export class QuizDatasource implements IQuizDatasource {
   ) {}
 
   async getAllQuiz(): Promise<QuizModel[]> {
-    const response =  await this.apiClient.getAll<IProps>();
-    const parsedResponse = response.data.results.map(body => QuizModel.fromApi(body));
-    return parsedResponse;
+    // try {
+      const response =  await this.apiClient.getAll<IProps>() as AxiosResponse<IProps>;
+      const parsedResponse = response.data.results.map(body => QuizModel.fromApi(body));
+      return parsedResponse;
+    // } catch (error) {
+    //   throw error
+    // }
   }
 }
