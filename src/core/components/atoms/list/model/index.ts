@@ -1,8 +1,7 @@
 import { ModelOfTheme } from "@src/core/themes"
-import { IQuizReducer } from "@src/modules/quiz/presenter";
 import { ListRenderItem, StyleProp, ViewStyle } from "react-native";
 
-export type ModelOfList<ItemT = IQuizReducer> = {
+export type ModelOfList<ItemT = any> = {
   theme: ModelOfTheme,
   data?: Array<ItemT>;
   item: ListRenderItem<ItemT> | null | undefined,

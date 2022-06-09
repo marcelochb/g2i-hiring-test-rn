@@ -30,6 +30,7 @@ export const quizReducer = (
         const firstQuiz = draft.quizzes.find(quiz => quiz.answered == undefined);
         draft.currentQuiz = { ...firstQuiz } as IQuizReducer;
         draft.totalCount = action.payload.quizzes.length;
+        draft.correctAnswers = 0;
         draft.loading = false;
         break;
       }
