@@ -1,4 +1,4 @@
-# g2i-hiring-test-rn
+# G2i Code Challenge - Quiz Project
 
 ![Success-flow](apk/Success_flow.gif)
 ![Error-flow](apk/Error_flow.gif)
