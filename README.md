@@ -1,12 +1,14 @@
 # G2i Code Challenge - Quiz Project
 
-![Success-flow](apk/Success_flow.gif)
-![Error-flow](apk/Error_flow.gif)
-
 ## Click to download Android version for App test
 <a download="apk/app-release.apk" href="apk/app-release.apk" title="ImageName">
     <img align="center" alt="react" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg">
 </a>
+<a href="data:application/octet-stream,DATA" download="apk/app-release.apk">TITLE</a>
+
+![Success-flow](apk/Success_flow.gif)
+![Error-flow](apk/Error_flow.gif)
+
 
 ### Technologies used
 
