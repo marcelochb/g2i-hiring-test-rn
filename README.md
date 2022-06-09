@@ -1,5 +1,8 @@
 # g2i-hiring-test-rn
 
+![Success-flow](apk/Success_flow.gif)
+![Error-flow](apk/Error_flow.gif)
+
 ### Technologies used
 
 - React Native
