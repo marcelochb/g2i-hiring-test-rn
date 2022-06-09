@@ -49,8 +49,7 @@ Project
 - `cd ios && pod install && cd ..`
 - `npx react-native run-ios`
 
-###########################################################
-G2i React Native Code Challenge - Trivia App
+# G2i React Native Code Challenge - Trivia App
 
 Your challenge is to create a 10 question, true or false, trivia app with React Native.
 
