@@ -23,12 +23,18 @@ Project
 │   │   ├── routes: React Navigation config.
 │   │   ├── services: Api service (axios).
 │   │   ├── themes: Theme config.
-│   ├── modules: App main react components.
-│   │   ├── quiz: App main react components.
-│   │   │   ├── domain: Entitys and usecases.
+│   ├── modules: Project's modules.
+│   │   ├── quiz: Quiz module.
+│   │   │   ├── domain: Entitys, Usecases and Repository's interface.
 │   │   │   ├── external: Datasources.
-│   │   │   ├── infra: Repositories and Models.
-│   │   │   ├── presenter: Screens, binds, reducer and actions.
+│   │   │   ├── infra: Repositories, Models and Datasources's interface.
+│   │   │   ├── presenter: Screens, binds and store.
+│   │   │   │   ├── binds: Inject dependecy of module.
+│   │   │   │   ├── screens: Home, question and result screens.
+│   │   │   │   │   ├── home: View, controller (hooks) and style.
+│   │   │   │   │   ├── question: View, controller (hooks) and style.
+│   │   │   │   │   ├── result: View, controller (hooks) and style.
+│   │   │   │   ├── store: Reducer and actions.
 │   ├── index.tsx: Main application component.
 |
 ├── tsconfig.json: Typescript compiler configurations
