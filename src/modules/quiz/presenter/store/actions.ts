@@ -15,7 +15,7 @@ export const quizLoadSuccess = (quizzes: QuizEntity[]) => {
   }
 }
 
-export const quizAnswerSuccess = (answer: boolean) => {
+export const quizAnswerSuccess = (answer: string) => {
   return {
     type: QuizReducerConstants.QUIZ_ANSWER_SUCCESS,
     payload: {answer}

@@ -1,8 +1,8 @@
 import { useNavigation } from "@react-navigation/native"
 import { GlobalState } from "@src/core/config/store/model"
 import { InjectContants } from "@src/core/constants"
-import { QuizEntity, IGetAllQuizUseCase } from "@src/modules/quiz/domain"
-import { useEffect, useState } from "react"
+import {  IGetAllQuizUseCase } from "@src/modules/quiz/domain"
+import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { container } from "tsyringe"
 import { quizDependences } from "../../../binds"
@@ -24,11 +24,10 @@ export const useQuestionController = () => {
       load();
     },[]
   )
-  const answerQuestion = (answer: boolean) => {
+  const answerQuestion = (answer: string) => {
     dispatch(quizStatusLoading());
     dispatch(quizAnswerSuccess(answer));
     // Vefify if it is last question and navigate to results
-    console.log(state.currentQuiz);
     if (state.currentQuiz.currentCount == state.totalCount) {
         const screen:any = 'Result';
         navigation.navigate(screen);

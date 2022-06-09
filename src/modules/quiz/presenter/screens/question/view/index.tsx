@@ -13,8 +13,8 @@ export const Question: React.FC = () => {
         <CardQuestion
           theme={BaseTheme}
           label={quiz.question}
-          onPressTrue={() => handlerController.answerQuestion(true)}
-          onPressFalse={() => handlerController.answerQuestion(false)}
+          onPressTrue={() => handlerController.answerQuestion("True")}
+          onPressFalse={() => handlerController.answerQuestion("False")}
         />
         <Texts.Body theme={BaseTheme} alignCenter>{`${quiz.currentCount} of ${totalCount}`}</Texts.Body>
       </View>

@@ -49,7 +49,6 @@ export const quizReducer = (
         const firstQuiz = draft.quizzes.find(quiz => quiz.answered == undefined);
         // Verify if isn't last question, and select next one.
         if (draft.currentQuiz.currentCount != draft.totalCount) {
-          console.log('entrei 2')
           draft.currentQuiz = { ...firstQuiz } as IQuizReducer;
           draft.loading = false;
         }
