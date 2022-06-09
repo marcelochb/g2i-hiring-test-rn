@@ -25,9 +25,9 @@ Project
 │   │   ├── themes: Theme config.
 │   ├── modules: Project's modules.
 │   │   ├── quiz: Quiz module.
-│   │   │   ├── domain: Entitys, Usecases and Repository's interface.
+│   │   │   ├── domain: Entities, Usecases and Repositorie's interface.
 │   │   │   ├── external: Datasources.
-│   │   │   ├── infra: Repositories, Models and Datasources's interface.
+│   │   │   ├── infra: Repositories, Models and Datasources' interface.
 │   │   │   ├── presenter: Screens, binds and store.
 │   │   │   │   ├── binds: Inject dependecy of module.
 │   │   │   │   ├── screens: Home, question and result screens.
