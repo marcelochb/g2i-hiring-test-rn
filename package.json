@@ -54,13 +54,16 @@
   },
   "jest": {
     "preset": "react-native",
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js",
-      "jsx",
-      "json",
-      "node"
-    ]
+    "resetMocks": false,
+    "automock": false,
+    "transformIgnorePatterns": [
+      "/node_modules/(?!(jest-)?react-native|(@react-native|react-native)|@react-navigation/(.*)|react-(native|universal|navigation)-(.*)|@react-native-community/(.*)|bs-platform|(@[a-zA-Z]+/)?(bs|reason|rescript)-(.*)/).*/"
+    ],
+    "setupFiles": [
+      "./node_modules/react-native-gesture-handler/jestSetup.js"
+    ],
+    "moduleNameMapper": {
+      "@src/(.*)": "<rootDir>/src/$1"
+    }
   }
 }
