@@ -6,7 +6,7 @@ import { QuizDatasource } from "../../external/datasources/quiz_datasource";
 import { QuizRepository } from "../../infra/repositories";
 
 export const quizDependences = () => {
-  container.register(InjectContants.IApiClient,{useValue: new ApiClient()});
+  container.register(InjectContants.IApiClient,{useValue: new ApiClient({mockSimulate: false})});
   container.register(InjectContants.IQuizDatasource,{useClass: QuizDatasource});
   container.register(InjectContants.IQuizRepository,{useClass: QuizRepository});
   container.register(InjectContants.GetAllQuizUseCase,{useClass: GetAllQuizUseCase});
