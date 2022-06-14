@@ -1,12 +1,9 @@
 # G2i Code Challenge - Quiz Project
 
-
 ### [Download Android App for test!](https://github.com/marcelochb/g2i-hiring-test-rn/blob/master/apk/app-release.apk?raw=true)
-
 
 ![Success-flow](apk/Success_flow.gif)
 ![Error-flow](apk/Error_flow.gif)
-
 
 ### Technologies used
 
@@ -15,11 +12,18 @@
 - Redux
 - Tsyringe (inject dependency to clean architecture)
 - Axios
+- Jest (unit test)
 
 ## Project structure
 
 ```
 Project
+├── __tests__
+|   ├── modules
+│   │   ├── quiz
+│   │   │   ├── domain: Usecase unit test.
+│   │   │   ├── external: Datasource unit test.
+│   │   │   ├── infra: Repository unit test.
 ├── src
 |   ├── assets: Application images, videos, gifs and others.
 │   ├── core: Tools used by all project.
