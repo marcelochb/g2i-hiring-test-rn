@@ -28,6 +28,10 @@ jest.mock("react-redux", () => ({
     });
   })
 }));
+jest.mock("react", () => ({
+  ...jest.requireActual("react"),
+  useEffect: jest.fn(),
+}));
 
 export const quizDependences = () => {
   container.register(InjectContants.IApiClient,{useValue: new ApiClient({mockSimulate: true})});
@@ -37,7 +41,7 @@ export const quizDependences = () => {
 }
 describe('Question controller', () => {
   test("When load success, return QuizEntity[]", () => {
-    // const {getController} = useQuestionController();
-    // expect(getController.quiz).toBe([new QuizEntity({category: 'teste',question: 'teste', correct_answer: true})])
+    const {getController} = useQuestionController();
+    expect(getController.quiz).toBe([new QuizEntity({category: 'teste',question: 'teste', correct_answer: true})])
   });
 });
