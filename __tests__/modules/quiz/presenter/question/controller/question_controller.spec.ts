@@ -17,14 +17,15 @@ jest.mock("react-redux", () => ({
   ...jest.requireActual("react-redux"),
   useDispatch: jest.fn(),
   useSelector: jest.fn().mockImplementation(callback => {
-    return callback({
+    return callback({quizReducer: {
       loading: false,
       error: false,
       empty: false,
       quizzes: [{category: 'teste',question: 'teste', correct_answer: true}],
-      currentQuiz: {} as IQuizReducer,
+      currentQuiz: {category: 'teste',question: 'teste', correct_answer: true} as IQuizReducer,
       totalCount: 1,
       correctAnswers: 0
+    }
     });
   })
 }));
@@ -42,6 +43,6 @@ export const quizDependences = () => {
 describe('Question controller', () => {
   test("When load success, return QuizEntity[]", () => {
     const {getController} = useQuestionController();
-    expect(getController.quiz).toBe([new QuizEntity({category: 'teste',question: 'teste', correct_answer: true})])
+    expect(getController.quiz).toStrictEqual({category: 'teste',question: 'teste', correct_answer: true})
   });
 });
