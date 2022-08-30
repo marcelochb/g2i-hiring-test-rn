@@ -1,14 +1,11 @@
 import { ModelOfTheme } from "@src/core/themes";
 import { StyleSheet } from "react-native";
 
-export const styles = (theme: ModelOfTheme) => {
-  const {metrics, colors} = theme;
-  return StyleSheet.create({
+export const styles = (theme: ModelOfTheme) => StyleSheet.create({
     container: {
       flexDirection: 'column',
       justifyContent: 'space-between',
-      padding: metrics.base,
+      padding: theme.metrics.base,
       height: '100%',
     }
-  })
-}
+  });

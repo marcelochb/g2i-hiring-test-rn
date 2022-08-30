@@ -28,7 +28,29 @@ module.exports = {
   moduleNameMapper: {
     "@src/(.*)": "<rootDir>/src/$1"
   },
-
+  collectCoverage: true,
+  collectCoverageFrom: [
+      "src/**/*.ts"
+  ],
+  coveragePathIgnorePatterns: [
+      "node_modules",
+      "test-config",
+      "interfaces",
+      "jestGlobalMocks.ts",
+      ".module.ts",
+      "<rootDir>/src/app/main.ts",
+      ".mock.ts"
+  ],
+  coverageDirectory: "<rootDir>/coverage/",
+  coverageThreshold: {
+      "global": {
+          "branches": 20,
+          "functions": 30,
+          "lines": 50,
+          "statements": 50
+      }
+  },
+  verbose: false,
   // This is the only part which you can keep
   // from the above linked tutorial's config:
   cacheDirectory: '.jest/cache',
