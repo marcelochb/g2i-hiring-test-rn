@@ -5,10 +5,8 @@ import { GetAllQuizUseCase, QuizEntity } from '@src/modules/quiz/domain';
 import { QuizDatasource } from '@src/modules/quiz/external';
 import { QuizRepository } from '@src/modules/quiz/infra/repositories';
 import { container } from 'tsyringe';
-import { useQuestionController } from '../../../../../../src/modules/quiz/presenter/screens/question/controller';
-import renderer from 'react-test-renderer';
-import { IQuizReducer } from '../../../../../../src/modules/quiz/presenter/store';
-import {Question} from '../../../../../../src/modules/quiz/presenter/screens/question/view';
+import { useQuestionController } from '../../../../../../../src/modules/quiz/presenter/screens/question/controller';
+import { IQuizReducer } from '../../../../../../../src/modules/quiz/presenter/store';
 jest.mock("@react-navigation/native", () => ({
   ...jest.requireActual("@react-navigation/native"),
   useNavigation: jest.fn(),
