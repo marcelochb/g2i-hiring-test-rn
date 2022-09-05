@@ -1,46 +1,62 @@
 import 'reflect-metadata';
 import { InjectContants } from '@src/core/constants';
-import { ApiClient } from '@src/core/services';
-import { GetAllQuizUseCase, QuizEntity } from '@src/modules/quiz/domain';
-import { QuizDatasource } from '@src/modules/quiz/external';
-import { QuizRepository } from '@src/modules/quiz/infra/repositories';
+import {  QuizEntity } from '@src/modules/quiz/domain';
+import { renderHook } from "@testing-library/react-hooks";
+import { act} from 'react-test-renderer';
 import { container } from 'tsyringe';
 import { useQuestionController } from '../../../../../../../src/modules/quiz/presenter/screens/question/controller';
 import { IQuizReducer } from '../../../../../../../src/modules/quiz/presenter/store';
+const quiz =  {category: 'teste',question: 'teste', correct_answer: true, currentCount: 1} as IQuizReducer;
+function sleep(ms:number) {
+  return new Promise<void>((resolve) => setTimeout(resolve, ms));
+}
 jest.mock("@react-navigation/native", () => ({
   ...jest.requireActual("@react-navigation/native"),
-  useNavigation: jest.fn(),
+  useNavigation: jest.fn().mockImplementation(() => {return {navigate: jest.fn()}} ),
 }));
 jest.mock("react-redux", () => ({
   ...jest.requireActual("react-redux"),
-  useDispatch: jest.fn(),
-  useSelector: jest.fn().mockImplementation(callback => {
-    return callback({quizReducer: {
+  useDispatch: jest.fn().mockImplementation(() => jest.fn()),
+  useSelector: jest.fn().mockImplementation(callback => callback({quizReducer: {
       loading: false,
       error: false,
       empty: false,
       quizzes: [{category: 'teste',question: 'teste', correct_answer: true}],
-      currentQuiz: {category: 'teste',question: 'teste', correct_answer: true} as IQuizReducer,
+      currentQuiz: quiz,
       totalCount: 1,
-      correctAnswers: 0
-    }
-    });
-  })
-}));
-jest.mock("react", () => ({
-  ...jest.requireActual("react"),
-  useEffect: jest.fn(),
+      correctAnswers: 0}}))
 }));
 
-export const quizDependences = () => {
-  container.register(InjectContants.IApiClient,{useValue: new ApiClient({mockSimulate: true})});
-  container.register(InjectContants.IQuizDatasource,{useClass: QuizDatasource});
-  container.register(InjectContants.IQuizRepository,{useClass: QuizRepository});
-  container.register(InjectContants.GetAllQuizUseCase,{useClass: GetAllQuizUseCase});
-}
 describe('Question controller', () => {
-  test("When load success, return QuizEntity[]", () => {
-    const {getController} = useQuestionController();
-    expect(getController.quiz).toStrictEqual({category: 'teste',question: 'teste', correct_answer: true})
+  test("If it loaded on success, should returned QuizEntity array", async () => {
+    const quizzes = [new QuizEntity({category:'Technology',correct_answer:false,question:'What is it?'})];
+    class QuizMockGetAllQuizUseCase {
+      call = jest.fn().mockImplementation(() => quizzes);
+    };
+    container.register(InjectContants.GetAllQuizUseCase,{useValue: new QuizMockGetAllQuizUseCase()});
+
+    const { result } = renderHook(() => useQuestionController());
+    result.current.handlerController.answerQuestion('true');
+    expect(result.current.getController.quiz).toEqual(quiz);
+  });
+  test("If it loaded empty, should returned empty array", async () => {
+    class QuizMockGetAllQuizUseCase {
+      call = jest.fn().mockImplementation(() => []);
+    };
+    container.register(InjectContants.GetAllQuizUseCase,{useValue: new QuizMockGetAllQuizUseCase()});
+
+    const { result } = renderHook(() => useQuestionController());
+    expect(result.current.getController.quiz).toEqual(quiz);
+  });
+  test("If it loaded with failure, should returned error state", async () => {
+    class QuizMockGetAllQuizUseCase {
+      call = jest.fn().mockRejectedValue(() =>{
+        throw Error;
+      });
+    };
+    container.register(InjectContants.GetAllQuizUseCase,{useValue: new QuizMockGetAllQuizUseCase()});
+
+    const { result } = renderHook(() => useQuestionController());
+    expect(result.current.getController.quiz).toEqual(quiz);
   });
 });

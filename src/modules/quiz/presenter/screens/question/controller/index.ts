@@ -2,11 +2,11 @@ import { useNavigation } from "@react-navigation/native"
 import { GlobalState } from "@src/core/config/store/model"
 import { InjectContants, navigationContants } from "@src/core/constants"
 import {  IGetAllQuizUseCase } from "@src/modules/quiz/domain"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { container } from "tsyringe"
 import { quizDependences } from "../../../binds"
-import { quizAnswerSuccess, quizLoadEmpty, quizLoadFailure, quizLoadSuccess, quizStatusLoading } from "../../../store"
+import { IQuizReducer, quizAnswerSuccess, quizLoadEmpty, quizLoadFailure, quizLoadSuccess, quizStatusLoading } from "../../../store"
 
 quizDependences()
 export const useQuestionController = () => {

@@ -13,7 +13,6 @@ jest.mock("@react-navigation/native", () => ({
 }));
 jest.mock("react-redux", () => ({
   ...jest.requireActual("react-redux"),
-  useDispatch: jest.fn(),
   useSelector: jest.fn().mockImplementation(callback => {
     return callback({quizReducer: {
       loading: false,
@@ -27,17 +26,7 @@ jest.mock("react-redux", () => ({
     });
   })
 }));
-jest.mock("react", () => ({
-  ...jest.requireActual("react"),
-  useEffect: jest.fn(),
-}));
 
-export const quizDependences = () => {
-  container.register(InjectContants.IApiClient,{useValue: new ApiClient({mockSimulate: true})});
-  container.register(InjectContants.IQuizDatasource,{useClass: QuizDatasource});
-  container.register(InjectContants.IQuizRepository,{useClass: QuizRepository});
-  container.register(InjectContants.GetAllQuizUseCase,{useClass: GetAllQuizUseCase});
-}
 describe('Result controller', () => {
   test("When load success, return QuizEntity[]", () => {
     const {getController} = useResultController();
