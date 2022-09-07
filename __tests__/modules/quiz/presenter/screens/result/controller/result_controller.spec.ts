@@ -1,10 +1,4 @@
 import 'reflect-metadata';
-import { InjectContants } from '@src/core/constants';
-import { ApiClient } from '@src/core/services';
-import { GetAllQuizUseCase, QuizEntity } from '@src/modules/quiz/domain';
-import { QuizDatasource } from '@src/modules/quiz/external';
-import { QuizRepository } from '@src/modules/quiz/infra/repositories';
-import { container } from 'tsyringe';
 import { useResultController } from '@src/modules/quiz/presenter/screens/result/controller';
 import { IQuizReducer } from '@src/modules/quiz/presenter';
 jest.mock("@react-navigation/native", () => ({

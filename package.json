@@ -66,6 +66,7 @@
     "eslint-plugin-react": "^7.28.0",
     "eslint-plugin-react-hooks": "^4.3.0",
     "jest": "^27.1.5",
+    "jest-mock-axios": "^4.7.0-beta",
     "metro-babel-register": "^0.71.1",
     "metro-react-native-babel-preset": "^0.67.0",
     "react-native-typescript-transformer": "^1.2.13",

@@ -2,14 +2,11 @@ import 'reflect-metadata';
 import { InjectContants } from '@src/core/constants';
 import {  QuizEntity } from '@src/modules/quiz/domain';
 import { renderHook } from "@testing-library/react-hooks";
-import { act} from 'react-test-renderer';
 import { container } from 'tsyringe';
 import { useQuestionController } from '../../../../../../../src/modules/quiz/presenter/screens/question/controller';
 import { IQuizReducer } from '../../../../../../../src/modules/quiz/presenter/store';
 const quiz =  {category: 'teste',question: 'teste', correct_answer: true, currentCount: 1} as IQuizReducer;
-function sleep(ms:number) {
-  return new Promise<void>((resolve) => setTimeout(resolve, ms));
-}
+
 jest.mock("@react-navigation/native", () => ({
   ...jest.requireActual("@react-navigation/native"),
   useNavigation: jest.fn().mockImplementation(() => {return {navigate: jest.fn()}} ),
