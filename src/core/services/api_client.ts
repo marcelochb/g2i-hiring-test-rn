@@ -1,8 +1,5 @@
-import axios, { AxiosResponse } from 'axios';
+import axios, { AxiosInstance, AxiosResponse } from 'axios';
 
-const api = axios.create({
-  baseURL: 'https://opentdb.com/api.php?amount=10&difficulty=hard&type=boolean',
-});
 interface IProps {
   mockSimulate: boolean;
 }
@@ -14,18 +11,21 @@ export interface IApiClient {
 }
 
 export class ApiClient implements IApiClient {
-
+  api: AxiosInstance;
   mockSimulate: boolean;
 
   constructor({mockSimulate = false}:IProps) {
-    this.mockSimulate = mockSimulate
+    this.mockSimulate = mockSimulate;
+    this.api = axios.create({
+      baseURL: 'https://opentdb.com/api.php?amount=10&difficulty=hard&type=boolean',
+    })
   }
 
 
 
   async getAll<T>({mockAxiosResponse}:IParams<T>): Promise<AxiosResponse<T, any>> {
     try {
-      return this.mockSimulate ? mockAxiosResponse :  await api.get<T>('');
+      return this.mockSimulate ? mockAxiosResponse :  await this.api.get<T>('');
     } catch (error) {
       throw error
     }
