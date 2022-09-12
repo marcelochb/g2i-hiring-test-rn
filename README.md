@@ -13,12 +13,14 @@
 - Tsyringe (inject dependency to clean architecture)
 - Axios
 - Jest (unit test)
+- Detox (e2e test)
 
 ## Project structure
 
 ```
 Project
 ├── __tests__
+├── e2e
 |   ├── modules
 │   │   ├── quiz
 │   │   │   ├── domain: Usecase unit test.
