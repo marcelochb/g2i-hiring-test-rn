@@ -1,3 +1,6 @@
+const { HomePageTest } = require("./pages/home");
+const homePage = new HomePageTest();
+
 describe('Example', () => {
   beforeAll(async () => {
     await device.launchApp();
@@ -12,7 +15,8 @@ describe('Example', () => {
   });
 
   it('should answer 10 questions and show result', async () => {
-    await element(by.text('BEGIN')).tap();
+    // await element(by.text('BEGIN')).tap();
+    await homePage.clickButton();
     await expect(element(by.text('1 of 10'))).toBeVisible();
     await element(by.text('TRUE')).tap();
     await expect(element(by.text('2 of 10'))).toBeVisible();

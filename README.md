@@ -63,6 +63,13 @@ Project
 - `cd ios && pod install && cd ..`
 - `npx react-native run-ios`
 
+### How to run integration test
+
+- `brew update && brew install node`
+- `brew tap wix/brew;brew install applesimutils;`
+- `npm install -g detox-cli`
+- `detox build && detox test`
+
 # G2i React Native Code Challenge - Trivia App
 
 Your challenge is to create a 10 question, true or false, trivia app with React Native.
