@@ -40,7 +40,7 @@ Project
 │   │   ├── routes: React Navigation config.
 │   │   ├── services: Api service (axios).
 │   │   ├── themes: Theme config.
-│   ├── modules: Project's modules.
+│   ├── modules: Project's modules (clean code pattern).
 │   │   ├── quiz: Quiz module.
 │   │   │   ├── domain: Entities, Usecases and Repositorie's interface.
 │   │   │   ├── external: Datasources.
