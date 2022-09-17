@@ -19,13 +19,13 @@
 
 ```
 Project
-├── __tests__
+├── __tests__: Unit tests
 |   ├── modules
 │   │   ├── quiz
 │   │   │   ├── domain: Usecase unit test.
 │   │   │   ├── external: Datasource unit test.
 │   │   │   ├── infra: Repository unit test.
-├── e2e
+├── e2e: Integration tests
 |   ├── actions: Actions page elements
 |   ├── flows: Flow Actions
 |   ├── pages: Page elements
