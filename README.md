@@ -20,12 +20,15 @@
 ```
 Project
 ├── __tests__
-├── e2e
 |   ├── modules
 │   │   ├── quiz
 │   │   │   ├── domain: Usecase unit test.
 │   │   │   ├── external: Datasource unit test.
 │   │   │   ├── infra: Repository unit test.
+├── e2e
+|   ├── actions: Actions page elements
+|   ├── flows: Flow Actions
+|   ├── pages: Page elements
 ├── src
 |   ├── assets: Application images, videos, gifs and others.
 │   ├── core: Tools used by all project.
